@@ -1,5 +1,5 @@
 to build:
-   make
+   ./build.sh
 
 to install:
    make install
