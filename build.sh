@@ -2,7 +2,7 @@
 
 set -e
 
-if ! -d obj 
+if [ ! -d obj ]
 then
 	mkdir obj
 fi
