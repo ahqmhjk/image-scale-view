@@ -1,0 +1,8 @@
+to build:
+   make
+
+to install:
+   make install
+
+dir utils:
+   image transform(bmp<-->jpg, bmp<-->png) 
