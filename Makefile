@@ -15,7 +15,7 @@ endif
 CC = gcc
 CPP = g++
 CFLAGS = -g
-LIB = -lpng -lz -lm -ljpeg `pkg-config --cflags --libs gthread-2.0 gtk+-2.0` 
+LIB = -lpng -lz -lm -ljpeg `pkg-config --cflags --libs gthread-2.0 gtk+-2.0` -lX11
 INCLUDE = -I./inc -I./signal -I./utils -I./utils/private -I./utils/bmp_png -I./utils/bmp2jpg -I./utils/gif_png -I./utils/jpeg2bmp -I./utils/capture
 RM = rm -rf
 EXEC = gtkwin
