@@ -11,11 +11,15 @@ endif
 ifndef INSTALL
 INSTALL = install -s -m 755
 endif
-
 CC = gcc
 CPP = g++
-CFLAGS = -g
+ifdef GTK
+LIB = -lpng -lz -lm -ljpeg `pkg-config --cflags --libs gthread-2.0 gtk+-3.0` -lX11
+CFLAGS=-g -D GTK3
+else
 LIB = -lpng -lz -lm -ljpeg `pkg-config --cflags --libs gthread-2.0 gtk+-2.0` -lX11
+CFLAGS=-g
+endif
 INCLUDE = -I./inc -I./signal -I./utils -I./utils/private -I./utils/bmp_png -I./utils/bmp2jpg -I./utils/gif_png -I./utils/jpeg2bmp -I./utils/capture
 RM = rm -rf
 EXEC = gtkwin
