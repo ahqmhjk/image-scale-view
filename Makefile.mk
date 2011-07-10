@@ -1,9 +1,3 @@
- ##################################################
- # copyright-2010-Hu Jiakuan.                     #
- #                                                #
- #                                                #
- ###################################################
-
 ifndef BINDIR
 BINDIR  = /usr/local/bin
 endif
@@ -13,7 +7,7 @@ INSTALL = install -s -m 755
 endif
 CC = gcc
 CPP = g++
-ifdef GTK
+ifeq ($(GTK), 3)
 LIB = -lpng -lz -lm -ljpeg `pkg-config --cflags --libs gthread-2.0 gtk+-3.0` -lX11
 CFLAGS=-g -D GTK3
 else
@@ -52,10 +46,12 @@ obj/memory.o: utils/gif_png/memory.c utils/gif_png/gif2png.h
 obj/capture.o: utils/capture/capture.c utils/capture/capture.h
 	$(CC) $(CFLAGS) -o obj/capture.o -c utils/capture/capture.c $(INCLUDE) $(LIB)
 
-.PHONY: clean
+.PHONY: clean distclean
 clean:
-	$(RM) $(OBJTMP)/*.o $(EXEC)
+	$(RM) $(OBJTMP) $(EXEC) 
 
+distclean: clean
+	$(RM) Makefile
 
 install:
 	cp $(EXEC) /usr/bin/

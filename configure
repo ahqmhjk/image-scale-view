@@ -1,0 +1,28 @@
+# !/bin/bash
+
+set -e
+
+if [ ! -d obj ]
+then
+	mkdir obj
+fi
+
+GTK3_PATH=/usr/include/gtk-3.0/
+GTK=2
+
+if test -d $GTK3_PATH
+then
+	GTK=3
+fi
+
+echo "creating Makefile"
+echo "##################################################" > Makefile
+echo "# copyright-2010-Hu Jiakuan.                     #" >> Makefile
+echo "#                                                #" >> Makefile
+echo "#                                                #" >> Makefile
+echo "##################################################" >> Makefile
+
+echo "GTK=$GTK" >> Makefile
+cat Makefile.mk >> Makefile
+
+exit 0
