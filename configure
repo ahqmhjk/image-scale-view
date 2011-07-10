@@ -22,6 +22,31 @@ then
 	GTK=3
 fi
 
+function usage() {
+
+echo "Usage: configure [options]"
+echo "Options: [defaults in brackets after descriptions]"
+echo ""
+echo "Standard options:"
+echo "  --help or -h             print this message"
+echo "  --prefix=PREFIX          install in PREFIX [$prefix]"
+echo "  --bindir=DIR             user executables in DIR [EPREFIX/bin]"
+echo "  --libdir=DIR             object code libraries in DIR [EPREFIX/lib]"
+echo "  --includedir=DIR         C header files in DIR [PREFIX/include]"
+echo "  --mandir=DIR             man documentation in DIR [PREFIX/man]"
+echo "  --docdir=DIR             doc documentation in DIR [PREFIX/doc]"
+echo "  --outdir=DIR             output file in DIR [PREFIX/doc]"
+echo "  --exec=EXEC              output exec file name"
+echo ""
+echo "Advanced options (experts only):"
+echo "  --cc=CC                  use C compiler CC [$CC]"
+echo "  --cpp=CPP                use CPP compiler CPP [$CPP]"
+echo "  --debug                  whether support Debug[Default:No]"
+echo ""
+	
+exit 0
+}
+
 for opt do
   case "$opt" in
   --prefix=*) PREFIX=`echo $opt | cut -d '=' -f 2`
@@ -45,6 +70,8 @@ for opt do
   --outdir=*) OUTDIR=`echo $opt | cut -d '=' -f 2`
   ;;
   --debug) DEBUG="yes"
+  ;;
+  --help | -h) usage
   ;;
 	esac
 done
