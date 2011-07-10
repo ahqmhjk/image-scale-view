@@ -100,7 +100,21 @@ then
 	mkdir -p $OUTDIR
 fi
 
-echo "creating Makefile"
+
+echo "Prefix  directory   $PREFIX"
+echo "Binary  directory   $BINDIR"
+echo "Library directory   $LIBDIR"
+echo "Include directory   $INCLUDEDIR"
+echo "Manual directory    $MANDIR"
+echo "Doc directory       $DOCDIR"
+echo "Output directory    $OUTDIR"
+echo "The Executable Name $EXEC"
+echo "C compiler    	    $CC"
+echo "C++ compiler  	    $CPP"
+echo "Use Debug     	    $DEBUG"
+echo "Creating Makefile"
+
+
 echo "##################################################" > Makefile
 echo "# copyright-2010-Hu Jiakuan.                     #" >> Makefile
 echo "#                                                #" >> Makefile
