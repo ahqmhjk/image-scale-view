@@ -10,14 +10,17 @@ static void connect();
 
 static void g_global_free();
 
-static GtkWidget *window, *menu_file_new, *menu_file_open, *menu_file_save, *menu_file_save_as, *menu_window_quit, *menu_operation_transform, *menu_operation_grabwindow, *menu_operation_grabwholescr, *imageFrame, *hscale, *vscale;
+static GtkWidget *window; 
+static GtkWidget *menu_file_new, *menu_file_open, *menu_file_save, *menu_file_save_as, *menu_window_quit; 
+static GtkWidget *menu_operation_transform, *menu_operation_grabwindow, *menu_operation_grabwholescr;
+static GtkWidget *imageFrame, *hscale, *vscale;
 static GScale *g_scale = NULL;
 static GtkWidgetList *list = NULL;
 
 
 int main(int argc, char *argv[])
 {
-    gtk_init(&argc, &argv);
+  gtk_init(&argc, &argv);
 	if (!g_thread_supported()) 	g_thread_init(NULL);
 	gdk_threads_init();
 
