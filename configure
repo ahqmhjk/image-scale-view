@@ -2,17 +2,75 @@
 
 set -e
 
-if [ ! -d obj ]
-then
-	mkdir obj
-fi
+# default parameters
+GTK=2
+DEBUG="no"
+PREFIX=""
+BINDIR=""
+LIBDIR=""
+INCLUDEDIR=""
+MANDIR=""
+DOCDIR=""
+OUTDIR="obj"
+CC="gcc"
+CPP="g++"
+EXEC="gtkwin"
 
 GTK3_PATH=/usr/include/gtk-3.0/
-GTK=2
-
 if test -d $GTK3_PATH
 then
 	GTK=3
+fi
+
+for opt do
+  case "$opt" in
+  --prefix=*) PREFIX=`echo $opt | cut -d '=' -f 2`
+  ;;
+  --bindir=*) BINDIR=`echo $opt | cut -d '=' -f 2`
+  ;;
+  --libdir=*) LIBDIR=`echo $opt | cut -d '=' -f 2`
+  ;;
+  --includedir=*) INCLUDEDIR=`echo $opt | cut -d '=' -f 2`
+  ;;
+  --mandir=*) MANDIR=`echo $opt | cut -d '=' -f 2`
+  ;;
+  --docdir=*) DOCDIR=`echo $opt | cut -d '=' -f 2`
+  ;;
+  --cc=*) CC=`echo $opt | cut -d '=' -f 2`
+  ;;
+  --cpp=*) CPP=`echo $opt | cut -d '=' -f 2`
+  ;;
+  --exec=*) EXEC=`echo $opt | cut -d '=' -f 2`
+  ;;
+  --outdir=*) OUTDIR=`echo $opt | cut -d '=' -f 2`
+  ;;
+  --debug) DEBUG="yes"
+  ;;
+	esac
+done
+
+if test -z "$PREFIX" ; then
+	PREFIX="/usr/local"
+fi
+if test x"$BINDIR" = x""; then
+  BINDIR="${PREFIX}/bin"
+fi
+if test x"$LIBDIR" = x""; then
+  LIBDIR="${PREFIX}/lib"
+fi
+if test x"$INCLUDEDIR" = x""; then
+  INCLUDEDIR="${PREFIX}/include"
+fi
+if test x"$DOCDIR" = x""; then
+  DOCDIR="${PREFIX}/share/doc"
+fi
+if test x"$MANDIR" = x""; then
+  MANDIR="${PREFIX}/share/man"
+fi
+
+if [ ! -d $OUTDIR ]
+then
+	mkdir -p $OUTDIR
 fi
 
 echo "creating Makefile"
@@ -23,6 +81,19 @@ echo "#                                                #" >> Makefile
 echo "##################################################" >> Makefile
 
 echo "GTK=$GTK" >> Makefile
+echo "PREFIX=$PREFIX" >> Makefile
+echo "BINDIR=$BINDIR" >> Makefile
+echo "LIBDIR=$LIBDIR" >> Makefile
+echo "INCLUDEDIR=$INCLUDEDIR" >> Makefile
+echo "MANDIR=$MANDIR" >> Makefile
+echo "DOCDIR=$DOCDIR" >> Makefile
+echo "DEBUG=$DEBUG" >> Makefile
+echo "CC=$CC" >> Makefile
+echo "CPP=$CPP" >> Makefile
+echo "EXEC=$EXEC" >> Makefile
+echo "OUTDIR=$OUTDIR" >> Makefile
 cat Makefile.mk >> Makefile
+
+
 
 exit 0
