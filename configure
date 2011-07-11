@@ -22,26 +22,30 @@ then
 	GTK=3
 fi
 
+function coloroutput() {
+	echo -e "\e[$1m\e[1m$2\e[0m"
+}
+
 function usage() {
 
-echo "Usage: configure [options]"
-echo "Options: [defaults in brackets after descriptions]"
+coloroutput 33  "Usage: configure [options]"
+coloroutput 33  "Options: [defaults in brackets after descriptions]"
 echo ""
-echo "Standard options:"
-echo "  --help or -h             print this message"
-echo "  --prefix=PREFIX          install in PREFIX [$prefix]"
-echo "  --bindir=DIR             user executables in DIR [EPREFIX/bin]"
-echo "  --libdir=DIR             object code libraries in DIR [EPREFIX/lib]"
-echo "  --includedir=DIR         C header files in DIR [PREFIX/include]"
-echo "  --mandir=DIR             man documentation in DIR [PREFIX/man]"
-echo "  --docdir=DIR             doc documentation in DIR [PREFIX/doc]"
-echo "  --outdir=DIR             output file in DIR [PREFIX/doc]"
-echo "  --exec=EXEC              output exec file name"
+coloroutput 33  "Standard options:"
+coloroutput 33  "  --help or -h             print this message"
+coloroutput 33 "  --prefix=PREFIX          install in PREFIX [$prefix]"
+coloroutput 33 "  --bindir=DIR             user executables in DIR [EPREFIX/bin]"
+coloroutput 33 "  --libdir=DIR             object code libraries in DIR [EPREFIX/lib]"
+coloroutput 33 "  --includedir=DIR         C header files in DIR [PREFIX/include]"
+coloroutput 33 "  --mandir=DIR             man documentation in DIR [PREFIX/man]"
+coloroutput 33 "  --docdir=DIR             doc documentation in DIR [PREFIX/doc]"
+coloroutput 33 "  --outdir=DIR             output file in DIR [PREFIX/doc]"
+coloroutput 33 "  --exec=EXEC              output exec file name"
 echo ""
-echo "Advanced options (experts only):"
-echo "  --cc=CC                  use C compiler CC [$CC]"
-echo "  --cpp=CPP                use CPP compiler CPP [$CPP]"
-echo "  --debug                  whether support Debug[Default:No]"
+coloroutput 33 "Advanced options (experts only):"
+coloroutput 33 "  --cc=CC                  use C compiler CC [$CC]"
+coloroutput 33 "  --cpp=CPP                use CPP compiler CPP [$CPP]"
+coloroutput 33 "  --debug                  whether support Debug[Default:No]"
 echo ""
 	
 exit 0
@@ -101,18 +105,18 @@ then
 fi
 
 
-echo "Prefix  directory   $PREFIX"
-echo "Binary  directory   $BINDIR"
-echo "Library directory   $LIBDIR"
-echo "Include directory   $INCLUDEDIR"
-echo "Manual directory    $MANDIR"
-echo "Doc directory       $DOCDIR"
-echo "Output directory    $OUTDIR"
-echo "The Executable Name $EXEC"
-echo "C compiler    	    $CC"
-echo "C++ compiler  	    $CPP"
-echo "Use Debug     	    $DEBUG"
-echo "Creating Makefile"
+coloroutput 32 "Prefix  directory   $PREFIX"
+coloroutput 32 "Binary  directory   $BINDIR"
+coloroutput 32 "Library directory   $LIBDIR"
+coloroutput 32 "Include directory   $INCLUDEDIR"
+coloroutput 32 "Manual directory    $MANDIR"
+coloroutput 32 "Doc directory       $DOCDIR"
+coloroutput 32 "Output directory    $OUTDIR"
+coloroutput 32 "The Executable Name $EXEC"
+coloroutput 32 "C compiler    	    $CC"
+coloroutput 32 "C++ compiler  	    $CPP"
+coloroutput 32 "Use Debug     	    $DEBUG"
+coloroutput 35 "Creating Makefile"
 
 
 echo "##################################################" > Makefile
