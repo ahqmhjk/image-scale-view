@@ -22,30 +22,36 @@ then
 	GTK=3
 fi
 
-function coloroutput() {
-	echo -e "\e[$1m\e[1m$2\e[0m"
+function coloroutput_yellow() {
+#	echo -e "\e[$1m\e[1m$2\e[0m"
+	echo "[0;$1;43m$2"
+}
+
+function coloroutput_black() {
+#	echo -e "\e[$1m\e[1m$2\e[0m"
+	echo "[0;$1;40m$2"
 }
 
 function usage() {
 
-coloroutput 31  "Usage: configure [options]"
-coloroutput 31  "Options: [defaults in brackets after descriptions]"
+coloroutput_yellow 31  "Usage: configure [options]"
+coloroutput_yellow 31  "Options: [defaults in brackets after descriptions]"
 echo ""
-coloroutput 31  "Standard options:"
-coloroutput 31  "  --help or -h             print this message"
-coloroutput 31 "  --prefix=PREFIX          install in PREFIX [$prefix]"
-coloroutput 31 "  --bindir=DIR             user executables in DIR [EPREFIX/bin]"
-coloroutput 31 "  --libdir=DIR             object code libraries in DIR [EPREFIX/lib]"
-coloroutput 31 "  --includedir=DIR         C header files in DIR [PREFIX/include]"
-coloroutput 31 "  --mandir=DIR             man documentation in DIR [PREFIX/man]"
-coloroutput 31 "  --docdir=DIR             doc documentation in DIR [PREFIX/doc]"
-coloroutput 31 "  --outdir=DIR             output file in DIR [PREFIX/doc]"
-coloroutput 31 "  --exec=EXEC              output exec file name"
+coloroutput_yellow 31  "Standard options:"
+coloroutput_yellow 31  "  --help or -h             print this message"
+coloroutput_yellow 31 "  --prefix=PREFIX          install in PREFIX [$prefix]"
+coloroutput_yellow 31 "  --bindir=DIR             user executables in DIR [EPREFIX/bin]"
+coloroutput_yellow 31 "  --libdir=DIR             object code libraries in DIR [EPREFIX/lib]"
+coloroutput_yellow 31 "  --includedir=DIR         C header files in DIR [PREFIX/include]"
+coloroutput_yellow 31 "  --mandir=DIR             man documentation in DIR [PREFIX/man]"
+coloroutput_yellow 31 "  --docdir=DIR             doc documentation in DIR [PREFIX/doc]"
+coloroutput_yellow 31 "  --outdir=DIR             output file in DIR [PREFIX/doc]"
+coloroutput_yellow 31 "  --exec=EXEC              output exec file name"
 echo ""
-coloroutput 31 "Advanced options (experts only):"
-coloroutput 31 "  --cc=CC                  use C compiler CC [$CC]"
-coloroutput 31 "  --cpp=CPP                use CPP compiler CPP [$CPP]"
-coloroutput 31 "  --debug                  whether support Debug[Default:No]"
+coloroutput_yellow 31 "Advanced options (experts only):"
+coloroutput_yellow 31 "  --cc=CC                  use C compiler CC [$CC]"
+coloroutput_yellow 31 "  --cpp=CPP                use CPP compiler CPP [$CPP]"
+coloroutput_yellow 31 "  --debug                  whether support Debug[Default:No]"
 echo ""
 	
 exit 0
@@ -105,18 +111,18 @@ then
 fi
 
 
-coloroutput 32 "Prefix  directory   $PREFIX"
-coloroutput 32 "Binary  directory   $BINDIR"
-coloroutput 32 "Library directory   $LIBDIR"
-coloroutput 32 "Include directory   $INCLUDEDIR"
-coloroutput 32 "Manual directory    $MANDIR"
-coloroutput 32 "Doc directory       $DOCDIR"
-coloroutput 32 "Output directory    $OUTDIR"
-coloroutput 32 "The Executable Name $EXEC"
-coloroutput 32 "C compiler    	    $CC"
-coloroutput 32 "C++ compiler  	    $CPP"
-coloroutput 32 "Use Debug     	    $DEBUG"
-coloroutput 35 "Creating Makefile"
+coloroutput_black 32 "Prefix  directory   $PREFIX"
+coloroutput_black 32 "Binary  directory   $BINDIR"
+coloroutput_black 32 "Library directory   $LIBDIR"
+coloroutput_black 32 "Include directory   $INCLUDEDIR"
+coloroutput_black 32 "Manual directory    $MANDIR"
+coloroutput_black 32 "Doc directory       $DOCDIR"
+coloroutput_black 32 "Output directory    $OUTDIR"
+coloroutput_black 32 "The Executable Name $EXEC"
+coloroutput_black 32 "C compiler    	    $CC"
+coloroutput_black 32 "C++ compiler  	    $CPP"
+coloroutput_black 32 "Use Debug     	    $DEBUG"
+coloroutput_yellow 35 "Creating Makefile"
 
 
 echo "##################################################" > Makefile
